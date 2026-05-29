@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Lessons</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Lessons List</h1>
+
+        <a href="/lessons/new" class="btn btn-primary">
+            Add Lesson
+        </a>
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Terms</th>
+            <th>Type</th>
+            <th>Department</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="lesson : ${lessons}">
+
+            <td th:text="${lesson.name}"></td>
+
+            <td th:text="${lesson.code}"></td>
+
+            <td th:text="${lesson.terms}"></td>
+
+            <td th:text="${lesson.type}"></td>
+
+            <td th:text="${lesson.department}"></td>
+
+            <td>
+                <a th:href="@{/comments/{id}(id=${lesson.id})}"
+                   class="btn btn-success btn-sm">
+
+                    View Details
+                </a>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
